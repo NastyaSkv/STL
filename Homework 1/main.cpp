@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 #include<list>
 using std::cin;
 using std::cout;
