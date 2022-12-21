@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 
-//template<typename T>void print(std::list<T>& lt);
+template<typename T>void print(std::list<T>& lt);
 
 void main()
 {
@@ -14,15 +14,16 @@ void main()
 	int value;
 	std::list<int> lt = { 0,1,1,2,3,5,8,13,21,34,55 };
 	std::list<int>::iterator it;
-	//print(lt);
+	print(lt);
 	
 	for (it = lt.begin(); it != lt.end(); it++)
 	{
 		cout << *it << "\t";
 	}
 	cout << endl;
-	cout << "Введите индекс добавляемого элемента: "; cin >> index;
+	cout << "Введите индекс добавляемого элемента: "; cin >> ;
 	cout << "Введите значение добавляемого элемента: "; cin >> value;
+	lt.begin();
 	lt.insert(it,index, value);
 	for (it = lt.begin(); it != lt.end(); it++)
 	{
@@ -30,13 +31,13 @@ void main()
 	}
 }
 
-//template<typename T>void print(std::list<T>& lt)
-//{
-//
-//	for (std::list<int>::iterator it = lt.begin(); it != lt.end(); it++)
-//	{
-//		cout << *it << "\t";
-//	}
-//	cout << endl;
-//	it.insert(index, value);
-//}
+template<typename T>void print(std::list<T>& lt)
+{
+
+	for ( it = lt.begin(); it != lt.end(); it++)
+	{
+		cout << *it << "\t";
+	}
+	cout << endl;
+	it.insert(index, value);
+}

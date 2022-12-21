@@ -1,6 +1,8 @@
 #include<iostream>
 #include<array>
 #include<vector>
+#include<list>
+#include<algorithm>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -8,7 +10,7 @@ using std::endl;
 #define tab "\t"
 //#define STL_ARRAY
 //#define MY_EXCEPTION
-#define STL_VECTOR
+//#define STL_VECTOR
 
 template<typename T>void print(const std::vector<T>& vec);
 
@@ -56,12 +58,12 @@ void main()
 		std::cerr << e.what() << endl;
 	}
 
-	for (std::vector<int>::iterator it=vec.begin(); it!=vec.end(); ++it)
+	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
 	{
 		cout << *it << tab;
 	}
 	cout << endl;
-	
+
 	for (std::vector<int>::reverse_iterator it = vec.rbegin(); it != vec.rend(); ++it)
 	{
 		cout << *it << tab;
@@ -75,14 +77,36 @@ void main()
 	{
 		cout << "¬ведите индекс добавл€емого элемента: "; cin >> index;
 		if (index >= vec.size())cout << "Out of range" << endl;
-	} while (index >= vec.size());	
+	} while (index >= vec.size());
 	cout << "¬ведите количество добавл€емых значений: "; cin >> number;
 	cout << "¬ведите значение добавл€емого элемента: "; cin >> value;
 
-	vec.insert(vec.begin()+index,number, value);
+	vec.insert(vec.begin() + index, number, value);
 	print(vec);
 
+	do
+	{
+		cout << "¬ведите индекс удал€емого значени€: "; cin >> index;
+		if (index >= vec.size())cout << "Out of range" << endl;
+	} while (index >= vec.size());
+	cout << "¬ведите количество удал€емых элементов: "; cin >> index;
+	vec.erase(vec.begin() + index, vec.begin() + index + number);
+	for (int i : vec)cout << i << tab; cout << endl;
+
+
 #endif //STL_VECTOR
+
+	std::list<int> list = { 0,1,1,2,3,5,8,13,21,34,55,89 };
+	for (int i : list)cout << i << tab; cout << endl;
+	int value;
+	int index;
+	cout << "¬ведите индекс добавл€емого элемента: "; cin >> index;
+	cout << "¬ведите значение добавл€емого элемента: "; cin >> value;
+	std::list<int>::iterator position = list.begin();
+	//for (int i = 0; i < index; i++)++position;
+	std::advance(position, index);  //то же самое что и for
+	list.insert(position, value);
+	for (int i : list)cout << i << tab; cout << endl;
 
 }
 
